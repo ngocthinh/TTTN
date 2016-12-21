@@ -9,22 +9,27 @@
             <span class="icon-bar"></span>                        
           </button>
         </div>
-        <div class="collapse navbar-collapse" >
+        <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
             <li><%= link_to t(".home"), root_path %></li>
           </ul>
+          <% if logged_in? %>
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to t(".profile") %></li>
-            <li><%= link_to t(".products") %></li>
-            <li><%= link_to t(".signout") %></li>
+            <li><%= link_to t(".profile"), user_path(@current_user) %></li>
+            <li><%= link_to t(".signout"), logout_path,method: "delete" %> 
+            <% if current_user.is_admin? %>
+            <li><%= link_to t(".category"), admin_categorys_path %></li>
+            <% end %>
+            </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to t(".category") %></li>
           </ul>
+          <% else %>
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to t(".signin") %></li>
-            <li><%= link_to t(".signup") %></li>
+            <li><%= link_to t(".signin"), login_path %></li>
+            <li><%= link_to t(".signup"), signup_path %></li>
           </ul> 
+          <% end %>
        </div>
      </div>
    </nav>

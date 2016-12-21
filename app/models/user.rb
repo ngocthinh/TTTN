@@ -14,4 +14,8 @@ class User < ApplicationRecord
     uniqueness: {case_sensitive: false}
   has_secure_password
   validates :password, presence: true, length: {minimum: Settings.minimum_password}
+
+  def current_user? user
+    self == user
+  end
 end
