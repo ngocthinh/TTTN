@@ -1,5 +1,6 @@
 minimum_password: 6
 maximum_email: 255
 maximum_name: 50
+category_per_page: 5
 user_per_page: 5
 page_404_url: "public/404.html"

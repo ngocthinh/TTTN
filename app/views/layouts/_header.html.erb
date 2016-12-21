@@ -18,7 +18,7 @@
             <li><%= link_to t(".profile"), user_path(@current_user) %></li>
             <li><%= link_to t(".signout"), logout_path,method: "delete" %> 
             <% if current_user.is_admin? %>
-            <li><%= link_to t(".category"), admin_categorys_path %></li>
+              <li><%= link_to t(".category"), admin_categorys_path %></li>
             <% end %>
             </li>
           </ul>

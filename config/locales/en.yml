@@ -9,6 +9,7 @@ en:
   postimported: "post imported."
   create_category_fail: "Create category fail"
   category_deleted: "Category deleted"
+  fail_delete_category: "faild delete category"
   admin_base_denied: "you are not admin"
   static_pages:
     home:
@@ -100,3 +101,4 @@ en:
         add: "Add"
       show:
         add: "Add++"
+        products: "Products :"
