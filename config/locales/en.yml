@@ -1,4 +1,15 @@
 en:
+  please_log_in: "Please log in"
+  welcome_message: "welcome to E-commerce"
+  fail_login: "Log in fail"
+  profile_updated: "Profile updated"
+  user_deleted: "User deleted"
+  check_log_in: "Please log in."
+  invalid_login: "Invalid email/password combination"
+  postimported: "post imported."
+  create_category_fail: "Create category fail"
+  category_deleted: "Category deleted"
+  admin_base_denied: "you are not admin"
   static_pages:
     home:
       title: "Ecommerce_06"
@@ -18,3 +29,74 @@ en:
       category: "Category"
       signin: "Sign in"
       signup: "Sign up"
+  carts:
+    cart:
+      accept: "Accept"
+    index:
+      all_order: "All order"
+    show:
+      user: "User "
+      order: "order "
+      user_name: "User name"
+      product_name: "Product name"
+      count: "count"
+      sum: "Sum"
+      delete: "Delete"
+  products:
+    product:
+      posted: "Posted"
+      ago: "ago."
+      view_product: "View product"
+      confirm_delete: "You sure?"
+      delete: "Delete"
+    index:
+      all_Products: "All Products"
+    new:
+      add_products_by_form: "Add products by form"
+      enter_name: "Enter name..."
+      enter_price: "Enter price..."
+      hot: "HOT"
+      normal: "Normal"
+      description: "Description..."
+      add: "Add"
+      add_products_from_csv: "Add proaaducts from CSV"
+    show:
+      add_to_shopping_cart: "Add to Shopping Cart"
+  sessions:
+    new:
+      log_in: "Log in"
+      remember_me: "Remember me on this computer"
+      new_user: "New user?"
+      sign_up_now: "Sign up now!"
+  shared:
+    error_messages: 
+      error: "error"
+      error_msg: "The form contains "
+    import_form: 
+      import: "Import"
+  users:
+    edit:
+      edit_user: "Edit user"
+      update_profile: "Update your profile"
+      save_changes: "Save changes"
+    new:
+      sign_up: "Sign up"
+      create_my_account: "Create my account"
+    show:
+      name: "Name :"
+      email: "Email :"
+      edit_user: "Edit user"
+  admin:
+    categorys:
+      index:
+        all_Category: "All Category"
+        id_category: "ID category : "
+        delete: "Delete"
+        add_category: "Add category"
+        add_products_csv: "Add products csv"
+        confirm_delete: "You sure?"
+      new:
+        add_category: "Add category"
+        add: "Add"
+      show:
+        add: "Add++"
