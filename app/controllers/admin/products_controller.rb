@@ -1,7 +1,7 @@
-class Admin::ProductsController < ApplicationController
+class Admin::ProductsController < Admin::BaseController
 	
 	def index
-	  @products=Product.all.paginate page: params[:page], per_page: 5 
+	  @products=Product.search_product(params[:search]).paginate page: params[:page], per_page: 5 
 	end
 
 	def new
@@ -9,21 +9,31 @@ class Admin::ProductsController < ApplicationController
 		@product = Product.new
 	end
 
+    def edit 
+      @product = Product.find(params[:id]) 
+    end
+
+    def update 
+      @product = Product.find(params[:id]) 
+      if @product.update_attributes product_params
+         redirect_to admin_categorys_path
+      else
+        redirect_to root_path
+      end
+    end
+
     def show
     	@product=Product.find_by id: params[:id]
     end
 
 
 	def create
-		@product = Product.create!(product_params)
+		@product = Product.new(product_params)
 		respond_to do |format|
       if @product.save
-        format.html {redirect_to category_url(params[:product][:category_id]), notice: 'Product was successfully created.' }
-        format.js   {}
-        format.json {render :index, status: :created, location: @products}
+        format.html {redirect_to admin_category_url(params[:product][:category_id]), notice: 'Product was successfully created.' }
       else
         format.html {render :new}
-        format.json {render json: @product.errors, status: :unprocessable_entity}
       end
       end
 	

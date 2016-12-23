@@ -1,22 +1,19 @@
-<% if !@category.nil? %>
+<% if @category.present? %>
 <div class="row">
   <div class="col-md-2">
   </div>
   <div class="col-md-8">
     <h2><%= t ".add_products_by_form" %></h2>
-	<%= form_for(@product, html: { multipart: true }) do |f| %>
+	<%= form_for([:admin, @product], html: { multipart: true }) do |f| %>
+	<%= render 'shared/error_messages', object: @product %>
 	  <div class="field">
-	    <%= f.text_field :productname, placeholder:  t(".enter_name"), class: "form
-	      -control" %>
+	    <%= f.text_field :productname, placeholder:  t(".enter_name"), class: "form-control" %>
 		<%= f.text_field :productPrice, placeholder: t(".enter_price"), class: "
 		  form-control" %>
 		<%= f.select(:productStatus, options_for_select([[t(".hot"), 1], [t(".
 		  normal"), 0]]), {}, {class: "form-control"}) %>
 		<%= f.text_area :productDescription, placeholder: t(".description"),class: 
 		  "form-control"  %>
-		<%= f.select(:rate, options_for_select([["0", 0], ["1", 1], ["2", 2], ["3",
-		   3], ["4", 4], ["5", 5], ["6", 6], ["7", 7], ["8", 8], ["9", 9]]), {}, {
-		   class: "form-control"}) %>
 		<span class="picture">
 		  <%= f.hidden_field :category_id, :value => @category.id %>
 		  <%= f.file_field :upPicture %>
@@ -28,15 +25,5 @@
   <div class="col-md-2">
   </div>
 </div>
-<% else %>
-  <div class="row">
-    <div class="col-md-2">
-    </div>
-    <div class="col-md-8">
-      <h2><%= t ".add_products_from_csv" %></h2>
-	  <%= render "shared/import_form"%>		
-    </div>
-    <div class="col-md-2">
-    </div>
-  </div>
+
 <% end %>

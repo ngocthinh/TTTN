@@ -1,0 +1,28 @@
+<% provide(:title, t(".edit_product")) %>
+<h1><%= t ".edit_product"%></h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    
+    <%= form_for [:admin, @product] do |f| %>
+
+      <%= render "shared/error_messages", object: @product %>
+
+      <div class="field">
+      <%= f.text_field :productname, placeholder:  t(".enter_name"), class: "form
+        -control" %>
+    <%= f.text_field :productPrice, placeholder: t(".enter_price"), class: "
+      form-control" %>
+    <%= f.select(:productStatus, options_for_select([[t(".hot"), 1], [t(".
+      normal"), 0]]), {}, {class: "form-control"}) %>
+    <%= f.text_area :productDescription, placeholder: t(".description"),class: 
+      "form-control"  %>
+    <span class="picture">
+      <%= f.file_field :upPicture %>
+    </span>
+    </div>
+      <%= f.submit ("Edit"), class: "btn btn-primary" %>
+    <% end %>
+ 
+  </div>
+</div>

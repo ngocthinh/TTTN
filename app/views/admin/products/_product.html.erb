@@ -3,15 +3,13 @@
   <th><span class="content"><%= product.productname %></span></th>
   <th><span class="content"><%= product.productDescription %></span></th>
   <th><span class="content"><%= product.productPrice %></span></th>
-  <th><%= image_tag product.upPicture.url if product.upPicture? %></th>
+  <th><%= image_tag product.upPicture.url, :size=>"200x100" if product.upPicture? %></th>
   <th><span class="timestamp">
 	<%= t ".posted" %> <%= time_ago_in_words(product.created_at) %> <%= t ".ago" %>  </span></th>
- 
-	<th><%= link_to t(".view_product"), new_cart_path(product_id: product.id) %></th>
+  <th><%= link_to t(".edit_product"),  edit_admin_product_path(product) %></th>
   
-  <% if logged_in? && current_user.admin %>
-  <th><span class="content"><%= product.rate %></span></th>
-  <th><%= link_to t(".delete"), product, method: :delete,
+  <% if logged_in? && current_user.is_admin %>
+  <th><%= link_to t(".delete"), admin_product_path(product), method: :delete,
 	data: { confirm: t(".confirm_delete") },:remote => true, :class => 'delete_pony' %></th>
   <% end %>
 </tr>

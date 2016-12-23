@@ -7,10 +7,12 @@
         <th><%= link_to category.name, admin_category_path(category) %></th>
         <th><%= category.decription %></th>
         <th><%= t ".id_category" %> <%= category.id %></th>
-        <th><%= link_to t(".delete"), admin_category_path(category), method: :delete,data: { confirm: t(".confirm_delete") }, class: "btn btn-danger custom"  %></th>
+        <th><%= link_to t(".delete"), admin_category_path(category), 
+          method: :delete,data: { confirm: t(".confirm_delete") }, 
+          class: "btn btn-danger custom"  %></th>
       </tr>
     <tbody>
   <% end %>
 </table>
-<%= link_to t(".add_category"), new_admin_category_path, class: "btn btn-success 
-  customadd" %>
+<%= link_to t(".add_category"), new_admin_category_path, 
+  class: "btn btn-success customadd" %>

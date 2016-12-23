@@ -1,7 +1,6 @@
 en:
-  please_log_in: "Please log in"
   welcome_message: "welcome to E-commerce"
-  fail_login: "Log in fail"
+  fail_login: "Login fail"
   profile_updated: "Profile updated"
   user_deleted: "User deleted"
   check_log_in: "Please log in."
@@ -9,13 +8,11 @@ en:
   postimported: "post imported."
   create_category_fail: "Create category fail"
   category_deleted: "Category deleted"
-  fail_delete_category: "faild delete category"
-  admin_base_denied: "you are not admin"
   static_pages:
     home:
-      title: "Ecommerce_06"
-      hello: "Hello, Ecommerce_06 !"
-      profile: "Ecommerce_06"
+      title: "Ecommerce_06s"
+      hello: "Hello, Ecommerce_06 aa!"
+      profile: "Ecommerce_06s"
       phone: "012345678"
       address: "DN - VN"
       home: "Home"
@@ -43,26 +40,41 @@ en:
       count: "count"
       sum: "Sum"
       delete: "Delete"
-  products:
-    product:
-      posted: "Posted"
-      ago: "ago."
-      view_product: "View product"
-      confirm_delete: "You sure?"
-      delete: "Delete"
-    index:
-      all_Products: "All Products"
-    new:
-      add_products_by_form: "Add products by form"
-      enter_name: "Enter name..."
-      enter_price: "Enter price..."
-      hot: "HOT"
-      normal: "Normal"
-      description: "Description..."
-      add: "Add"
-      add_products_from_csv: "Add proaaducts from CSV"
-    show:
-      add_to_shopping_cart: "Add to Shopping Cart"
+  admin:
+    categorys:
+      index:
+        all_Category: "All Category"
+        id_category: "ID category : "
+        delete: "Delete"
+        add_category: "Add category"
+        add_products_csv: "Add products csv"
+        confirm_delete: "You sure?"
+        edit_product: "Edit product"
+      new:
+        add_category: "Add category"
+        add: "Add"
+      show:
+        add: "Add++"
+    products:
+      product:
+        posted: "Posted"
+        ago: "ago."
+        view_product: "View product"
+        confirm_delete: "You sure?"
+        delete: "Delete"
+      index:
+        all_Products: "All Products"
+      new:
+        add_products_by_form: "Add products by form"
+        enter_name: "Enter name..."
+        enter_price: "Enter price..."
+        hot: "HOT"
+        normal: "Normal"
+        description: "Description..."
+        add: "Add"
+        add_products_from_csv: "Add proaaducts from CSV"
+      show:
+        add_to_shopping_cart: "Add to Shopping Cart"
   sessions:
     new:
       log_in: "Log in"
@@ -87,18 +99,3 @@ en:
       name: "Name :"
       email: "Email :"
       edit_user: "Edit user"
-  admin:
-    categorys:
-      index:
-        all_Category: "All Category"
-        id_category: "ID category : "
-        delete: "Delete"
-        add_category: "Add category"
-        add_products_csv: "Add products csv"
-        confirm_delete: "You sure?"
-      new:
-        add_category: "Add category"
-        add: "Add"
-      show:
-        add: "Add++"
-        products: "Products :"

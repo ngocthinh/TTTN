@@ -1,4 +1,4 @@
-<% provide(:title, @category.name) %>
+<% provide :title, @category.name %>
 <div class="row">
   <aside class="col-md-2">
     <section class="user_info">
@@ -12,9 +12,11 @@
     <h3><%= t ".products" %>(<%= @category.products.count %>)</h3>
     <ol class="categorys">
     <table class="table table-striped">
+       <%= render @products %>
     </table>
     </ol>
     <%= will_paginate @products %>
   <% end %>
+  <%= link_to t(".add"), new_admin_product_path(:cate_id => @category.id), class: "btn btn-success custom"%>
   </div>
 </div>

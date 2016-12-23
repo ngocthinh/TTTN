@@ -1,7 +1,9 @@
 class Admin::CategorysController < Admin::BaseController
+  before_action :load_category, only: [:show, :destroy]
 
   def index
-    @categorys = Category.all
+    @categorys = Category.paginate page: params[:page], 
+      per_page: Settings.category_per_page
   end
 
   def new
@@ -9,11 +11,11 @@ class Admin::CategorysController < Admin::BaseController
   end
 
   def show
-    @category = Category.find_by id: params[:id]
     if @category.blank?
       @products = Settings.blank
     else
-      @products = @category.products.paginate page: params[:page], per_page: Settings.category_per_page
+      @products = @category.products
+        .paginate page: params[:page], per_page: Settings.category_per_page
     end
   end
 
@@ -28,7 +30,7 @@ class Admin::CategorysController < Admin::BaseController
   end
 
   def destroy
-    if Category.find_by(id: params[:id]).destroy
+    if @category.destroy
       flash[:success] = t "category_deleted"
     else
       flash[:danger] = t "fail_delete_category"
@@ -41,4 +43,9 @@ class Admin::CategorysController < Admin::BaseController
   def category_params
     params.require(:category).permit :name, :decription
   end
+
+  def load_category
+    @category = Category.find_by id: params[:id]
+  end
+
 end
