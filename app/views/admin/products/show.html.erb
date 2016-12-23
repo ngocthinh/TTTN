@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="carousel slide" data-ride="carousel">
+         <th><%= image_tag @product.upPicture.url if @product.upPicture? %></th>
+      </div>
+    </div>
+    <div class="col-sm-9">
+      <div class="well">
+        <p><%= @product.productname %></p>
+      </div>
+      <div class="well">
+        <p><%= @product.productDescription %></p><hr>
+        <p><%= @product.productPrice %></p><hr>
+        <p><%= time_ago_in_words(@product.created_at) %></p>
+      </div>
+      <div class="well">
+        <p><%= link_to t(".add_to_shopping_cart"), new_cart_path(product_id: @product.id, count: 3) %></p>
+      </div>
+    </div>
+  </div>
+</div>
