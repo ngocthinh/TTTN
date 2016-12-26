@@ -1,0 +1,24 @@
+<% provide(:title, 'All aCategory') %>
+<h1><%= t ".all_Category" %></h1>
+<% @sum = 0 %>
+<table class="table table-inverse">
+  <% @cartItems.each do |item| %>
+    <tbody>
+	  <tr>
+	  	<th><%= item.id %></th>
+		<th><%= item.count %></th>
+		<th><%= item.cart_id %></th>
+		<th><%= item.product_id %></th>
+		<th><%= item.price * item.count %></th>
+		<th><%= link_to t(".delete"), destroycartitem_path(id: item.id), :method => :post, class: "btn btn-danger" %> 
+		</th>
+            <% @sum += item.price * item.count %>
+         
+	  </tr>
+	<tbody>
+  <% end %>
+   <tr>
+  <th><%= @sum %></th>
+   <th><%= link_to t(".order"), order_path(total_price: @sum), :method => :post, class: "btn btn-success" %></th>
+   </tr>
+</table>

@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+      <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">E-commerce
+                    <small>06</small>
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Portfolio Item Row -->
+        <div class="row">
+
+            <div class="col-md-8">
+                <%= image_tag @products.upPicture.url, :size=>"750x300" if @products.upPicture? %>
+            </div>
+
+            <div class="col-md-4">
+                <h3><%= @products.productname %></h3>
+                <h4>Price :  <%= @products.productPrice %>$</h4>
+                <p><%= @products.productDescription %></p>
+                <h3>number</h3>
+               <%= render "shared/carts_form" %>
+            </div>
+
+        </div>
+     <div class="row">
+
+    <h1 align="center">List Comment</h1>
+     <% if @products.comments.any? %>
+      <ol class="entries">
+        <%= render @comments %>
+      </ol>
+      <%= will_paginate @comments %>
+    <% end %>
+  </div>
+     <div class="row">
+      <%
+=begin
+%>
+   <%= render partial: "shared/comment_form", locals: { comment: @comments, products: @products }%>
+   <%
+=end
+%>
+
+    </div>
+</div>
+

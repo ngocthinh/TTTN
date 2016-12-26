@@ -1,0 +1,8 @@
+<h1><%= t ".all_Products" %></h1>
+
+<table class = "table">
+  <tr>
+    <th><%= render @products %></th>
+  </tr>
+</table>
+<%= will_paginate @products %>

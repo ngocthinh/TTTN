@@ -20,6 +20,10 @@ class Product < ApplicationRecord
       product.save!
     end
   end
+
+  scope :hot_product, -> do
+  where(productStatus: true).limit(4)
+  end
   
   scope :search_product, ->search do   
     where "productname LIKE ?","%#{search}%" if search.present?

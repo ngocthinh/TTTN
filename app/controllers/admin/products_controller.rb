@@ -16,7 +16,7 @@ class Admin::ProductsController < Admin::BaseController
     def update 
       @product = Product.find(params[:id]) 
       if @product.update_attributes product_params
-         redirect_to admin_categorys_path
+         redirect_to admin_products_path
       else
         redirect_to root_path
       end

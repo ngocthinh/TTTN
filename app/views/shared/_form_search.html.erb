@@ -1,0 +1,5 @@
+ <%= form_tag root_path, method: :get do %>
+    <%= text_field_tag :search, params[:search], class: "custom-search-form",
+      placeholder: ("search products") %>
+    <%= submit_tag  "seach products" %>
+    <% end %>

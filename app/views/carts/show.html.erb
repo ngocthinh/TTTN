@@ -1,0 +1,36 @@
+<% provide(:title, @cart.id) %>
+<div class="row">
+  <aside class="col-md-2">
+    <section class="user_info">
+      <h1><%= t ".user"%><%= @cart.user.name %></h1>
+      <h1><%= t ".order"%><%= @cart.totalprice %><h1>
+    </section>
+  </aside>
+    <div class="col-md-10">
+      <% if @cartitems.any? %>
+        <ol class="microposts">
+          <table class="table table-striped">
+            <tr>
+              <th><%= t ".user_name" %></th>
+              <th><%= t ".product_name" %></th>
+              <th><%= t ".count" %></th>
+              <th>price</th>
+            </tr>
+          <% @cartitems.each do |cartitem| %>
+            <tr> 
+              <th><%= @current_user.name %></th>
+              <th><%= cartitem.product.productname %></th>
+              <th><%= cartitem.count_product %></th>
+              <th><%= cartitem.total_price %></th>
+              <th><%= link_to t(".delete"), destroy_cartitem_path(product_id: cartitem.product_id) %></th>
+              <h1><% @sum+=cartitem.total_price %> </h1>
+            </tr>
+          <% end %>
+              <th><%=t ".sum" %></th>
+              <th> <%= @sum %> </th>
+              <th> <%= link_to t(".order"), order_path(total_price: @sum) %> </th>
+          </table>
+        </ol>
+      <% end %>
+    </div>
+</div>

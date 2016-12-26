@@ -1,0 +1,5 @@
+<%= form_tag( :action => "create") do %>  
+  <%= hidden_field_tag :product_id, @products.id %>  
+  <input class="count" id="count" name="count" type="number" />
+  <%= submit_tag "Forward" %>    
+<% end %>  

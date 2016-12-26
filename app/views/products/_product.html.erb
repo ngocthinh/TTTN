@@ -1,0 +1,7 @@
+ <tr>
+    <td><%= link_to product.productname %></td>
+    <td><%= product.productDescription %></td>
+    <td><%= product.productPrice %></td>
+    <td><%= t ".posted" %> <%= time_ago_in_words(product.created_at) %> <%= t ".ago" %></td>
+ </tr>
+
