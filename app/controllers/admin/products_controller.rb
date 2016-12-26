@@ -41,7 +41,7 @@ class Admin::ProductsController < Admin::BaseController
 
 	def import
 	  Product.import(params[:file])
-	  redirect_to products_url
+	  redirect_to admin_products_url
 	end
 
 	def destroy

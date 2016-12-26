@@ -12,6 +12,15 @@ class Product < ApplicationRecord
   validates :category_id, presence: true
   validates :productPrice, presence: true, numericality: { only_integer: true }	
 
+  def self.import(file)
+    CSV.foreach(file.path, headers: true) do |row|
+      product = find_by_id(row["productname"]) || new
+      parameters = ActionController::Parameters.new(row.to_hash)
+      product.update(parameters.permit(:productname, :productPrice, :productStatus,:productDescription, :rate, :upPicture, :category_id))
+      product.save!
+    end
+  end
+  
   scope :search_product, ->search do   
     where "productname LIKE ?","%#{search}%" if search.present?
   end

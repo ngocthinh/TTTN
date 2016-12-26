@@ -8,6 +8,13 @@ Rails.application.routes.draw do
   get    "/login", to: "sessions#new"
   post   "/login",  to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
+
+  namespace :admin do
+  resources :products do
+    collection { post :import }
+  end
+end
+
   namespace :admin do
     resources :categorys, only: [:new,:create,:index, :destroy, :show]
     resources :products

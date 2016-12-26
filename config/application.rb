@@ -1,7 +1,6 @@
 require_relative 'boot'
-#config.i18n.default_locale = :vn
+require 'csv'
 require 'rails/all'
-
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
