@@ -39,11 +39,6 @@ class Admin::ProductsController < Admin::BaseController
 	
 	end
 
-	def import
-	  Product.import(params[:file])
-	  redirect_to admin_products_url
-	end
-
 	def destroy
 		@product=Product.find_by id: params[:id]
 		@product.destroy

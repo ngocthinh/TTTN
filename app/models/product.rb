@@ -10,7 +10,7 @@ class Product < ApplicationRecord
   mount_uploader :upPicture, PictureUploader
 
   validates :category_id, presence: true
-  validates :productPrice, presence: true, numericality: { only_integer: true }	
+  validates :productPrice, presence: true, numericality: {only_integer: true}	
 
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
