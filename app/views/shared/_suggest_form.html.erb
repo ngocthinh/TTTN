@@ -1,0 +1,13 @@
+<%= form_for @suggest, html: {multipart: true} do |f| %>
+  <%= render 'shared/error_messages', object: @suggest %>
+  <div class="field">
+    <%= f.text_field :name, placeholder:  t("enter_name"), 
+      class: "form-control" %>
+    <%= f.text_area :content, placeholder: t("description"),
+      class: "form-control" %>
+    <span class="picture">
+    <%= f.file_field :up_picture %>
+    </span>
+  </div>
+  <%= f.submit yield(:text_submit), class: "btn btn-primary" %>
+<% end %>

@@ -1,7 +1,5 @@
  <tr>
-    <td><%= link_to product.productname %></td>
-    <td><%= product.productDescription %></td>
-    <td><%= product.productPrice %></td>
-    <td><%= t ".posted" %> <%= time_ago_in_words(product.created_at) %> <%= t ".ago" %></td>
+   <td><%= link_to product.productname, new_cart_path(product_id: product.id) %></td>
+   <td><%= product.productPrice %> $ </td>
  </tr>
 

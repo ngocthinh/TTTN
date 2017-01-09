@@ -1,7 +1,0 @@
-<tr>
-  <th><span class="content"><%= cart.user.name %></span></th>
-  <th><span class="content"><%= cart.totalprice %></span></th>
-  <% if logged_in? && current_user.admin %>
-	<th> <%= link_to t(".accept"), cart, method: :delete %></th>
-  <% end %>
-</tr>

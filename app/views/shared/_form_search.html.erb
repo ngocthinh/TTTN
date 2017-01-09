@@ -1,5 +1,11 @@
- <%= form_tag root_path, method: :get do %>
-    <%= text_field_tag :search, params[:search], class: "custom-search-form",
-      placeholder: ("search products") %>
-    <%= submit_tag  "seach products" %>
-    <% end %>
+<%= form_tag root_path, method: :get do %>
+  <div class="col-md-12 sidenav">
+  	 <div class="col-md-9 sidenav">
+  <%= text_field_tag :search, params[:search], 
+    class: "form-control", placeholder: ("search products") %>
+</div>
+ <div class="col-md-3 sidenav">
+  <%= submit_tag  "seach products", :class => "btn btn-default" %>
+</div>
+</div>
+<% end %>

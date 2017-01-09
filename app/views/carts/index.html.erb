@@ -1,44 +1,41 @@
 <div class="row">
-  
-</div>
-  <div class="row">
   <aside class="col-md-2"> 
-     <% @sum = 0%>
+    <% @sum = 0 %>
   </aside>
-    <div class="col-md-10">
-      <% if @products.present? %>
-       <table class = "table table-striped">
-        <tr>
-            
-            <th> Product Name  </th>
-            <br>
-            <th>Price</th>
-            <br>
-            <th>Count</th>
-            <th> 
-         
-          </tr>
-      <% @products.each do |product, count| %>
-       	<tr>
+  <div class="col-md-10">
+    <% if @products.present? %>
+      <table class = "table table-striped">
+        <tr> 
+          <th><%= t ".product_name" %></th>
+          <br>
+          <th><%= t ".price" %></th>
+          <br>
+          <th><%= t ".count" %></th>
+          <th> 
+        </tr>
+        <% @products.each do |product, count| %>
+          <tr>
             <th><%= product.productname %></th>
             <br>
             <th><%= product.productPrice %></th>
             <br>
             <th><%= count %></th>
             <th> 
-          <%= link_to t(".delete"), cart_path(product.id), method: :delete,
-            class: "btn btn-danger" %> </th>
-            <% @sum += count * product.productPrice %>
+            <%= link_to t(".delete"), cart_path(product.id), method: :delete,
+              class: "btn btn-danger" %> </th>
+              <% @sum += count * product.productPrice %>
           </tr>
-       <% end %>
-         <tr>
-          <th>Price : </th>
+        <% end %>
+        <tr>
+          <th><%= t(".price") %></th>
           <th><%= @sum %></th>
-         </tr>
-          <tr><td><%= link_to "save", addcart_path, class: "btn btn-success" %></td>
-        </table>
+        </tr>
+        <tr>
+          <td><%= link_to "Order", cart_path(@products) , 
+            class: "btn btn-success" %></td>
+      </table>
     <% end %>
-    </div>
+  </div>
 </div>
 
  

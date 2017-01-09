@@ -1,0 +1,32 @@
+<%= form_tag @suggest, method: :post do %> 
+<div class="col-md-12">
+  <div class="col-md-1">
+    <%= link_to suggest.user.name %>
+  </div>
+  <div class="col-md-1">
+    <%= suggest.name %>
+  </div>
+  <div class="col-md-2">
+    <%= suggest.content %>
+  </div>
+  <div class="col-md-3">
+    <%= image_tag suggest.up_picture.url, size: Settings.image_home.small %>
+  </div>
+  <div class="col-md-1">
+    <%= link_to '<i class="glyphicon glyphicon-remove-circle"></i>'.html_safe, 
+      admin_suggest_path(suggest), method: :delete %>
+  </div>
+  <div class="col-md-1">
+    <%= link_to '<i class="glyphicon glyphicon-edit"></i>'.html_safe, 
+      edit_admin_suggest_path(suggest)%>
+  </div>
+  <div class="col-md-1"> 
+    <%= select_tag :category_id, options_for_select(@categories.
+      collect {|category| [ category[:name], category[:id]]}) %>
+  </div>
+  <div class="col-md-2">
+    <%= hidden_field_tag :id, suggest.id %>
+    <%= submit_tag "accept", class: "btn btn-primary" %>
+  </div>
+</div>
+<% end %>

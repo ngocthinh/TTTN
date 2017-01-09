@@ -8,15 +8,31 @@ en:
   postimported: "post imported."
   create_category_fail: "Create category fail"
   category_deleted: "Category deleted"
+  product_successfully_created: "Product was successfully created."
+  fail_delete_category: "delete category fail"
+  products_create_sucess: "product created"
+  enter_name: "Enter name..."
+  enter_price: "Enter price..."
+  hot: "HOT"
+  normal: "Normal"
+  description: "Description..."
+  add: "Add"
+  edit_fail: "Edit Product fail."
+  you_are_admin: "You are admin !"
+  confirm_delete: "You sure?"
+  result_search: "Product not found"
+  admin_base_denied: "You are not admin"
+  product_imported: "import products successfully"
   static_pages:
     home:
-      title: "Ecommerce_06s"
-      hello: "Hello, Ecommerce_06 aa!"
-      profile: "Ecommerce_06s"
+      title: "Ecommerce_06"
+      hello: "Hello, Ecommerce !"
+      profile: "Ecommerce_06"
       phone: "012345678"
       address: "DN - VN"
       home: "Home"
       full_name: "Nguyen Ngoc Thinh"
+      products_hot: "Products hot"
   layouts:
     application:
       title: "ShopCart"
@@ -55,6 +71,11 @@ en:
         add: "Add"
       show:
         add: "Add++"
+    orders:
+      index:
+        show_category: "Show category"
+      show:
+        all_orders: "All orders"
     products:
       product:
         posted: "Posted"
@@ -66,15 +87,11 @@ en:
         all_Products: "All Products"
       new:
         add_products_by_form: "Add products by form"
-        enter_name: "Enter name..."
-        enter_price: "Enter price..."
-        hot: "HOT"
-        normal: "Normal"
-        description: "Description..."
-        add: "Add"
         add_products_from_csv: "Add proaaducts from CSV"
       show:
         add_to_shopping_cart: "Add to Shopping Cart"
+      edit:
+        edit: "Edit"
   sessions:
     new:
       log_in: "Log in"
@@ -99,3 +116,41 @@ en:
       name: "Name :"
       email: "Email :"
       edit_user: "Edit user"
+  carts:
+    index:
+      product_name: "Product Name"
+      price: "Price"
+      count: "Count"
+    new:
+      ecommerce: "E-commerce"
+      price: "Price : "
+      number: "Number"
+      comment: "List Comment"
+    show:
+      all_Category: "All categories"
+  admin:
+    categories:
+      index:
+        all_Category: "All Category"
+        id_category: "ID category : "
+        delete: "Delete"
+        add_category: "Add category"
+        add_products_csv: "Add products csv"
+      new:
+        add_category: "Add category"
+        add: "Add"
+      show:
+        add: "Add++"
+      category:
+  activerecord:
+    models: 
+      user: "Customer"
+    attributes:
+      user:
+        email: "Email address"
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "cannot be empty"

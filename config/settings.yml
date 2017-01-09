@@ -3,4 +3,9 @@ maximum_email: 255
 maximum_name: 50
 category_per_page: 5
 user_per_page: 5
+per_page: 8
 page_404_url: "public/404.html"
+image_home:
+  large: "750x300"
+  small: "150x100"
+  medium: "650x300"

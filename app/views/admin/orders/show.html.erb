@@ -1,0 +1,27 @@
+<% provide :title, t(".all_orders") %>
+<h1><%= t ".all_orders" %></h1>
+<% @sum = 0 %>
+<table class="table table-inverse">
+	 <thead>
+	 <tr>
+	  	<th>Product</th>
+		<th>count of each product</th>
+		<th>Price of each product</th>
+	  </tr>
+	   </thead>
+  <% @cartitems.each do |item| %>
+    <tbody>
+	  <tr>
+	  	<th><%= item.product.productname %></th>
+		<th><%= item.count %></th>
+		<th><%= item.price %></th>
+		<% @sum += item.count * item.price %>
+	  </tr>
+	<tbody>
+  <% end %>
+  <th><%= @sum %></th>
+  <th><%= @sum %></th>
+   <tr>
+   <th><%= link_to t(".back"), admin_orders_path, class: "btn btn-info" %></th>
+   </tr>
+</table>

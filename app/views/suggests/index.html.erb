@@ -1,0 +1,7 @@
+<h1><%= t ".suggest_Products" %></h1>
+<table class = "table">
+  <tr>
+    <th><%= render @suggests %></th>
+  </tr>
+</table>
+<%= link_to '<i class="glyphicon glyphicon-pencil"> New Suggest </i>'.html_safe, new_suggest_path %>

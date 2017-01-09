@@ -1,78 +1,74 @@
 class CartsController < ApplicationController
-  before_action :logged_in_user, only: [:addcart]
-  before_action :set_products, only: [:index, :addcart]
-  before_action :create_cart, only: [:addcart]
+  before_action :logged_in_user, only: :show
+  before_action :check_admin, only: :show
+  before_action :set_products, only: [:index, :show]
+  before_action :create_cart, only: :show
 
   def new
     session[:cart]=session[:cart] ||= Hash.new
     @products = Product.find_by id: params[:product_id]
-    @comments = @products.comments.paginate(page: params[:page])
-    @comment = current_user.comments.build
-  end
-
-  def show
-     
+    @comments = @products.comments
+    @rates = Rate.find_by(product_id: @products.id, user_id: current_user.id) unless current_user.nil?
   end
 
   def create
     id = params[:product_id]
-    resquest = params[:count] 
+    count = params[:count] 
     @cart = session[:cart]
-    @cart[id] = @cart[id] ? (@cart[id].to_i + resquest.to_i) : resquest.to_i
+    @cart[id] = @cart[id] ? (@cart[id].to_i + count.to_i) : count.to_i
     redirect_to action: :index
   end
-  
-  def index
 
+
+  def index
+    
   end
 
   def destroy
-	  session[:cart].delete params[:id]
+    session[:cart].delete params[:id]
     redirect_to action: :index
   end
 
-  def addcart
-    @products.each do |product, count|  
-       @addcart = CartItem.create!(price: product.productPrice, cart_id: Cart.find_by(user_id: current_user.id).id, product_id: product.id, count: count)
+  def show
+    @products.each do |product, count|
+      @cartitem = CartItem.find_by(product_id: product.id, cart_id: @cart.id)
+      if @cartitem
+        count +=  @cartitem.count
+        @cartitem.update(count: count)
+      else
+        @addcart = CartItem.create! price: product.
+        productPrice, cart_id: @cart.id, product_id: product.id, count: count
+      end
     end
-    redirect_to showCartItem_path
-  end
-
-  def showCartItem
-    @cartItems = CartItem.where(cart_id: Cart.find_by(user_id: current_user.id))
-  end
-
-  def destroycartitem
-    @cartitem = CartItem.find_by id: params[:id]
-    @cartitem.destroy
-    redirect_to showCartItem_path
-  end
-
-  def order
-    @cart= Cart.find_by user_id: current_user.id
-    @cart.update isStatic: true, totalprice: params[:total_price]
-    redirect_to showCartItem_path
+    redirect_to orders_path
   end
   
   private
-    def set_products 
-     @cart = session[:cart] ? session[:cart] : Hash.new
-     @products = @cart.map {|cart, count| [Product.find_by(id: cart[0]), count]}
-    end
+  
+  def set_products 
+    @cart = session[:cart] ? session[:cart] : Hash.new
+    @products = @cart.map {|id, count| [Product.find_by(id: id), count]}
+  end
 
-    def create_cart
+  def create_cart
     if Cart.find_by(user_id: current_user.id).present?
-      @cart = Cart.find_by(user_id: current_user.id)
+     @cart = Cart.find_by(user_id: current_user.id)
     else
-      @cart = Cart.create! user_id: current_user.id
+     @cart = Cart.create! user_id: current_user.id
     end
-    end
+  end
 
-    def logged_in_user
-    unless logged_in?
+  def logged_in_user
+    unless logged_in? 
       store_location
       flash[:danger] = t "check_log_in"
       redirect_to login_url
+    end
+  end
+  def check_admin
+    if current_user.is_admin?
+      flash[:danger] = t "you_are_admin"
+      redirect_to root_path
     end
   end
 end

@@ -97,13 +97,13 @@ ActiveRecord::Schema.define(version: 20161214085347) do
   end
 
   create_table "suggests", force: :cascade do |t|
-    t.text     "content"
+    t.string   "name"
+    t.string   "content"
+    t.string   "up_picture"
     t.integer  "user_id"
-    t.integer  "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_suggests_on_product_id"
-    t.index ["user_id", "product_id", "created_at"], name: "index_suggests_on_user_id_and_product_id_and_created_at"
+    t.index ["user_id", "created_at"], name: "index_suggests_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_suggests_on_user_id"
   end
 

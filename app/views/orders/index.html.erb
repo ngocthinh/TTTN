@@ -1,0 +1,41 @@
+<% provide :title, t(".all_orders") %>
+<% @sum = 0 %>
+<div class="row">
+  <aside class="col-md-2">
+    <section class="user_info">
+      <h1><%= t(".user") %><%= current_user.name %><%= t(".order") %><%= @cart.totalprice %>
+        <% if @cart.isStatic? %>
+        <p>paid</p>
+        <% else %>
+        <p>unpaid</p>
+        <% end %>
+    </section>
+  </aside>
+  <div class="col-md-10">
+    <ol class="microposts">
+      <table class="table table-striped">
+        <tr>
+          <th><%= t ".product_name" %></th>
+          <th><%= t ".count" %></th>
+          <th>price</th>
+        </tr>
+        <% @cartitems.each do |cartitem| %>
+          <tr> 
+            <th><%= cartitem.product.productname %></th>
+            <th><%= cartitem.count %></th>
+            <th><%= cartitem.price %></th>
+            <th><%= link_to t(".delete"), order_path(cartitem), method: :delete %></th>
+            <h1><% @sum+=cartitem.price*cartitem.count %> </h1>
+          </tr>
+        <% end %>
+        <tr> 
+          <th><%=t ".sum" %></th>
+          <th><%= @sum %></th>
+        </tr>
+        <tr>
+          <th><%= link_to t(".save"), orders_path(total_price: @sum), :method => :post, class: "btn btn-success" %></th>
+        </tr>
+      </table>
+    </ol>
+  </div>
+</div>

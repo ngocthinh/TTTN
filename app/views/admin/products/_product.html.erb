@@ -3,13 +3,12 @@
   <th><span class="content"><%= product.productname %></span></th>
   <th><span class="content"><%= product.productDescription %></span></th>
   <th><span class="content"><%= product.productPrice %></span></th>
-  <th><%= image_tag product.upPicture.url, :size=>"200x100" if product.upPicture? %></th>
-  <th><span class="timestamp">
-	<%= t ".posted" %> <%= time_ago_in_words(product.created_at) %> <%= t ".ago" %>  </span></th>
-  <th><%= link_to t(".edit_product"),  edit_admin_product_path(product) %></th>
-  
+  <th><%= image_tag product.upPicture.url, :size=>"200x100" %></th>
+  <th><%= link_to t(".edit_product"),  edit_admin_product_path(product), 
+    class: "btn btn-primary" %></th>
   <% if logged_in? && current_user.is_admin %>
   <th><%= link_to t(".delete"), admin_product_path(product), method: :delete,
-	data: { confirm: t(".confirm_delete") },:remote => true, :class => 'delete_pony' %></th>
+	  data: { confirm: t("confirm_delete") },remote: true, class: "delete_product" %></th>
   <% end %>
 </tr>
+

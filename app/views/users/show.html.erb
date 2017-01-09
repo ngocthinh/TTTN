@@ -15,7 +15,7 @@
               <td><%= t ".email"%></td>
               <td><%= @user.email%></td>
             </tr>
-            <tr><td><%= link_to t(".edit_user"), edit_user_path(current_user) %></td>
+            <tr><td><%= link_to t(".edit_user"), edit_user_path(current_user), class: "btn btn-info" %></td>
            </tr>
           </table>
         </div>

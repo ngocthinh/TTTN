@@ -1,0 +1,37 @@
+$(document).ready(function(){
+    $("#1").click(function(){
+       $("#1").attr('class', 'glyphicon glyphicon-star');
+       for (var i = 2; i <= 5; i++) {
+       	$("#"+i).attr('class', 'glyphicon glyphicon-star-empty');
+       };
+    });
+
+    $("#2").click(function(){
+       $("#1").attr('class', 'glyphicon glyphicon-star');
+       $("#2").attr('class', 'glyphicon glyphicon-star');
+       for (var i = 3; i <= 5; i++) {
+       	$("#"+i).attr('class', 'glyphicon glyphicon-star-empty');
+       };
+    });
+
+    $("#3").click(function(){
+       $("#1").attr('class', 'glyphicon glyphicon-star');
+       $("#2").attr('class', 'glyphicon glyphicon-star');
+       $("#3").attr('class', 'glyphicon glyphicon-star');
+       for (var i = 4; i <= 5; i++) {
+       	$("#"+i).attr('class', 'glyphicon glyphicon-star-empty');
+       };
+    });
+    
+    $("#4").click(function(){
+      for (var i = 1; i <= 4; i++) {
+       	$("#"+i).attr('class', 'glyphicon glyphicon-star');
+       };
+       	$("#5").attr('class', 'glyphicon glyphicon-star-empty');
+    });
+    $("#5").click(function(){
+       for (var i = 1; i <= 5; i++) {
+       	$("#"+i).attr('class', 'glyphicon glyphicon-star');
+       };
+    });
+});

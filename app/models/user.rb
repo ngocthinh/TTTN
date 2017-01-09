@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :product_vieweds, dependent: :destroy
   has_one  :carts, dependent: :destroy
   
-  validates :name,  presence: true, length: {maximum: Settings.maximum_name}
+  validates :name,  presence: {message: "enter name please"}, length: {maximum: Settings.maximum_name}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: {maximum: Settings.maximum_email},
     format: {with: VALID_EMAIL_REGEX},
@@ -17,5 +17,10 @@ class User < ApplicationRecord
 
   def current_user? user
     self == user
+  end
+
+  scope :user_date, -> do
+  select("users.*,").
+    group("updated_at")
   end
 end

@@ -1,5 +1,5 @@
-<%= form_tag( :action => "create") do %>  
+<%= form_tag action: "create" do %>  
   <%= hidden_field_tag :product_id, @products.id %>  
-  <input class="count" id="count" name="count" type="number" />
-  <%= submit_tag "Forward" %>    
+  <input id="count" name="count" type="number" min="1" value = 1 class="form-control" />
+  <%= submit_tag "add to cart", class: "btn btn-primary"  %> 
 <% end %>  

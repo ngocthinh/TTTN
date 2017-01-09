@@ -1,49 +1,72 @@
 <div class="container">
   <div class="row">
-      <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">E-commerce
-                    <small>06</small>
-                </h1>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <!-- Portfolio Item Row -->
-        <div class="row">
-
-            <div class="col-md-8">
-                <%= image_tag @products.upPicture.url, :size=>"750x300" if @products.upPicture? %>
-            </div>
-
-            <div class="col-md-4">
-                <h3><%= @products.productname %></h3>
-                <h4>Price :  <%= @products.productPrice %>$</h4>
-                <p><%= @products.productDescription %></p>
-                <h3>number</h3>
-               <%= render "shared/carts_form" %>
-            </div>
-
-        </div>
+    <div class="col-lg-12">
+      <h1 class="page-header"><%= t(".ecommerce") %></h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <%= image_tag @products.upPicture.url, size: Settings.image_home.medium %>
+      <br>
+      <br>
+      <% if logged_in? %>
+        <% if @rates.present? %>
+          <div class="row">
+            <section class="stats">
+              <%= render @rates %>
+            </section>
+          </div>
+        <% else %>
      <div class="row">
-
-    <h1 align="center">List Comment</h1>
-     <% if @products.comments.any? %>
-      <ol class="entries">
+    <section class="stats">
+      <%= render partial: "rates/rate", locals: {products: @products}%>
+    </section>
+  </div>
+  <% end %>
+  <% end %>
+    </div>
+    <div class="col-md-4">
+      <h3><%= @products.productname %></h3>
+      <h4><%= t(".price") %><%= @products.productPrice %> $</h4>
+      <p><%= @products.productDescription %></p>
+      <div id ="some" class ="some">
+      <p><% @products.rate.times do  %>
+        <span class="glyphicon glyphicon-star">
+      <% end %></p>
+    </div>
+      <input type="hidden" id="priceproduct" name="priceproduct" 
+      value= <%= @products.productPrice %> />
+        <h1 id = "price" ><%= @products.productPrice %></h1>   
+      <h3><%= t(".number") %></h3>
+      <%= render "shared/carts_form" %>
+    </div>
+  </div>
+  <% if logged_in? %>
+ 
+  <div class="row">
+    <section class="stats">
+      <%= render partial: "shared/comment_form", locals: {products: @products}%>
+    </section>
+  </div>
+  <% end %>
+  <div class="row">
+    <h4 align="center"><%= t(".comment") %></h4>
+   
+      <ol class="entries" id="entries">
         <%= render @comments %>
       </ol>
-      <%= will_paginate @comments %>
-    <% end %>
+   
   </div>
-     <div class="row">
-      <%
-=begin
-%>
-   <%= render partial: "shared/comment_form", locals: { comment: @comments, products: @products }%>
-   <%
-=end
-%>
-
-    </div>
 </div>
 
+<script lang="javascript">(function() {var pname = ( (document.title !='')? document.title : document.querySelector('h1').innerHTML );var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async=1; ga.src = '//live.vnpgroup.net/js/web_client_box.php?hash=e32f4ffa6dd95588f5d96a225095a4cc&data=eyJzc29faWQiOjIxMTM1ODIsImhhc2giOiJlZjAyNDhjNjI2MjRjN2M0MWE4NTY0MWE1Y2UzMmM4MCJ9&pname='+pname;var s = document.getElementsByTagName('script');s[0].parentNode.insertBefore(ga, s[0]);})();</script> 
+
+<div class="fb-comments" data-href="http://localhost:3000/" data-width="1000px" data-num-posts="2"></div>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = '//connect.facebook.net/en_US/all.js#xfbml=1&appId=504323752911178';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>

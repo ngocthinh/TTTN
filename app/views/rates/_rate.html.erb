@@ -1,0 +1,21 @@
+  <div class="col-md-12">
+  	<div class="col-md-4">
+    </div>
+  	<% if @rates.present? %>
+      <div class="col-md-10">
+          <% for i in 1..@rates.ratePoint %>
+              <%= link_to "<span id=\"#{i}\" class=\"glyphicon glyphicon-star\"></span>".html_safe, rates_path(id: @products.id, point: i), method: :post,remote: :true %>
+              <% end %>
+            <% for i in @rates.ratePoint+1..5 %>
+              <%= link_to "<span id=\"#{i}\" class=\"glyphicon glyphicon-star-empty\"></span>".html_safe, rates_path(id: @products.id, point: i), method: :post,remote: :true %>
+              <% end %>
+      </div>
+      <% else %>
+      <div class="col-xs-10">
+            <% for i in 1..5 %>
+              <%= link_to "<span id=\"#{i}\" class=\"glyphicon glyphicon-star-empty\"></span>".html_safe, rates_path(id: @products.id, point: i), method: :post,remote: :true %>
+              <% end %>
+      </div>
+      
+      <% end %>
+   </div>

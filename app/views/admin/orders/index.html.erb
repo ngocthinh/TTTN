@@ -1,0 +1,28 @@
+<% provide :title,t(".show_category") %>
+<div class="row">
+  <aside class="col-md-2">
+  </aside>
+    <div class="col-md-10">
+      <% if @carts.any? %>
+        <ol class="orders">
+          <table class="table table-striped">
+            <tr>
+              <th> User </th>
+               <button type="button" class="btn btn-default" id = "btn_delete" value = "Default" >Default</button>
+            </tr>
+          <% @carts.each do |cart| %>
+            <tr> 
+              <td><%= link_to cart.user.name, admin_order_path(cart) %></td>
+              <td><%= cart.totalprice %></td>
+              <% if cart.isStatic? %>
+              <th><%= link_to t(".reject"), admin_orders_path(id: cart.id, key: 1), method: :post, class: "btn btn-danger" %></th>
+              <% else %>
+              <th><%= link_to t(".accept"), admin_orders_path(id: cart.id, key: 0), method: :post, class: "btn btn-success" %></th>
+              <% end %>
+            </tr>
+          <% end %>
+          </table>
+        </ol>
+      <% end %>
+    </div>
+</div>

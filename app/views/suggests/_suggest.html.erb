@@ -1,0 +1,7 @@
+ <tr>
+   <td><%= link_to suggest.user.name %></td>
+   <td><%= suggest.content %></td>
+   <td><%= image_tag suggest.up_picture.url, size: Settings.image_home.small %></td>
+   <td><%= link_to '<i class="glyphicon glyphicon-remove"></i>'.html_safe, suggest_path(suggest), method: :delete %></td>
+   <td><%= link_to '<i class="glyphicon glyphicon-edit"></i>'.html_safe, edit_suggest_path(suggest)%></td>
+ </tr>

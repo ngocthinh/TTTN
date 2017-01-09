@@ -1,0 +1,8 @@
+<table>
+  <tr>
+    <th><span class="translation_missing" title="translation missing: en.views.requests.index.book_title">Book Title</span></th>
+    <th><span class="translation_missing" title="translation missing: en.views.requests.index.book_author">Book Author</span></th>
+    <th><span class="translation_missing" title="translation missing: en.views.requests.index.discription">Discription</span></th>
+    <th><span class="translation_missing" title="translation missing: en.views.requests.index.status">Status</span></th>  
+  </tr>
+</table>
